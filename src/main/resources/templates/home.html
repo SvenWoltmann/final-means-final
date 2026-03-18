@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Du bist eingeloggt</h1>
+    <form method="post" th:action="@{/logout}">
+        <button type="submit">Ausloggen</button>
+    </form>
+</body>
+</html>
