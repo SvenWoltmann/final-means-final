@@ -13,14 +13,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class UsernamePasswordAuthProvider implements AuthenticationProvider {
 
-    /** A user account with its password and granted authorities. */
-    private record User(String password, List<GrantedAuthority> authorities) {
+    /** A user account with its name, password and granted authorities. */
+    private record User(String username, String password, List<GrantedAuthority> authorities) {
     }
 
     // Both users have an empty authorities list - neither of them is an admin.
     private static final Map<String, User> USERS = Map.of(
-            "alice", new User("s3cr3t", List.of()),
-            "bob", new User("p@ssw0rd", List.of())
+            "alice", new User("alice", "s3cr3t", List.of()),
+            "bob", new User("bob", "p@ssw0rd", List.of())
     );
 
     @Override
@@ -33,7 +33,7 @@ public class UsernamePasswordAuthProvider implements AuthenticationProvider {
 
         User user = USERS.get(username);
         if (user != null && user.password().equals(password)) {
-            return new UsernamePasswordAuthenticationToken(username, password, user.authorities());
+            return new UsernamePasswordAuthenticationToken(user.username(), password, user.authorities());
         }
 
         throw new BadCredentialsException("Invalid username or password");
