@@ -7,14 +7,20 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UsernamePasswordAuthProvider implements AuthenticationProvider {
 
-    private static final Map<String, String> USERS = Map.of(
-            "alice", "s3cr3t",
-            "bob", "p@ssw0rd"
+    /** A user account with its password and granted authorities. */
+    private record User(String password, List<GrantedAuthority> authorities) {
+    }
+
+    // Both users have an empty authorities list - neither of them is an admin.
+    private static final Map<String, User> USERS = Map.of(
+            "alice", new User("s3cr3t", List.of()),
+            "bob", new User("p@ssw0rd", List.of())
     );
 
     @Override
@@ -25,9 +31,9 @@ public class UsernamePasswordAuthProvider implements AuthenticationProvider {
             throw new BadCredentialsException("Empty username or password");
         }
 
-        if (USERS.containsKey(username) && USERS.get(username).equals(password)) {
-            // The logged-in user has no roles at all.
-            return new UsernamePasswordAuthenticationToken(username, password, List.of());
+        User user = USERS.get(username);
+        if (user != null && user.password().equals(password)) {
+            return new UsernamePasswordAuthenticationToken(username, password, user.authorities());
         }
 
         throw new BadCredentialsException("Invalid username or password");
