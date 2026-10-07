@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fehler</title>
+    <title th:text="|HTTP ${status}|">Fehler</title>
 </head>
 <body>
-    <h1>Ein Fehler ist aufgetreten</h1>
-    <p>Bitte versuchen Sie es erneut.</p>
-    <a href="/login">Zurück zum Login</a>
+    <h1 th:text="|HTTP ${status} – ${status == 403 ? 'Zugriff verweigert' : 'Ein Fehler ist aufgetreten'}|">
+        HTTP 403 – Zugriff verweigert
+    </h1>
+    <p th:if="${status == 403}">Du hast keine Berechtigung für diesen Bereich.</p>
+    <p th:unless="${status == 403}">Bitte versuchen Sie es erneut.</p>
+    <a href="/home">Zurück zur Startseite</a>
 </body>
 </html>
