@@ -54,8 +54,7 @@
             <artifactId>thymeleaf-extras-springsecurity6</artifactId>
         </dependency>
 
-        <!-- Observability: request timing.
-             Bump this to 1.0.1 on stage to run the supply-chain attack. -->
+        <!-- Observability: request timing -->
         <dependency>
             <groupId>io.metricstack</groupId>
             <artifactId>request-timing</artifactId>
