@@ -16,7 +16,7 @@ This repository contains the demo code for my talk “Final means final” – h
 ### JEPs
 - [JEP 500: Prepare to Make Final Mean Final](https://openjdk.org/jeps/500)
 - [JEP 513: Flexible Constructor Bodies](https://openjdk.org/jeps/513)
-- [JEP draft: Null-Restricted Value Class Types (Preview)](https://openjdk.org/jeps/8316779)
+- [JEP draft: Null-Restricted and Nullable Types (Preview)](https://openjdk.org/jeps/8303099)
 - [JEP draft: Integrity by Default](https://openjdk.org/jeps/8305968)
 
 ### Talks
