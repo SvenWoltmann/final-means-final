@@ -6,6 +6,8 @@ This repository contains the demo code for my talk “Final means final” – h
 ## Links
 
 ### Articles
+- English Article about JEP 500: [JEP 500: Final Means Final – Deep Reflection in Java 26](https://www.happycoders.eu/java/jep-500-make-final-mean-final/)
+- German Article about JEP 500: [JEP 500: Final heißt final – Deep Reflection ab Java 26](https://www.happycoders.eu/de/java/jep-500-final-heisst-final/)
 - English Article about Deep Reflection: [Java Deep Reflection: How to Hack Integer and String](https://www.happycoders.eu/java/deep-reflection-how-to-hack-integer-and-string/)
 - German Article about Deep Reflection: [Java Deep Reflection: Wie man Integer und String hackt](https://www.happycoders.eu/de/java/deep-reflection-integer-string-modifizieren/)
 
